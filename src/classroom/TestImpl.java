@@ -12,7 +12,6 @@ public class TestImpl implements ITest{
         this.note=note;
         this.coefficient=coefficient;
     }
-
     @Override
     public double note() {
         return note;

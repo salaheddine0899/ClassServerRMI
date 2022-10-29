@@ -10,29 +10,24 @@ public class StudentImpl extends UnicastRemoteObject implements IStudent{
     private String lastName;
     int studentNumber;
     private Collection<ITest> tests;
-
     public StudentImpl(String firstName,String lastName,int studentNumber) throws RemoteException {
         this.firstName=firstName;
         this.lastName=lastName;
         this.studentNumber=studentNumber;
         tests=new ArrayList<>();
     }
-
     @Override
     public String firstName() throws RemoteException {
         return firstName;
     }
-
     @Override
     public String lastName() throws RemoteException {
         return lastName;
     }
-
     @Override
     public int studentNumber() throws RemoteException {
         return studentNumber;
     }
-
     @Override
     public String displayListTests() throws RemoteException {
         String listTest="";
@@ -40,13 +35,11 @@ public class StudentImpl extends UnicastRemoteObject implements IStudent{
             listTest+=test.display();
         return listTest;
     }
-
     @Override
     public void addTest(String label,double note,double coefficient) throws RemoteException {
         ITest test=new TestImpl(label,note,coefficient);
         tests.add(test);
     }
-
     @Override
     public double calculateAverage() throws RemoteException {
         double avg=0;
@@ -58,7 +51,6 @@ public class StudentImpl extends UnicastRemoteObject implements IStudent{
         if(coefficients!=1) throw new RuntimeException("number of coefficients is invalid");
         return avg;
     }
-
     public boolean isStudent(int studentNumber){
         return studentNumber==this.studentNumber;
     }

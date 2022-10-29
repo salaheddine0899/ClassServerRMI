@@ -6,13 +6,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class ClassImpl extends UnicastRemoteObject implements IClass{
-
     Collection<IStudent>students;
-
     public ClassImpl() throws RemoteException {
         students=new ArrayList<>();
     }
-
     @Override
     public IStudent addStudent(int studentNumber, String firstName, String lastName) throws RemoteException {
         IStudent student=new StudentImpl(firstName,lastName,studentNumber);
